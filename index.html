@@ -1,0 +1,138 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puff Puff Pass</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+.hero {
+    height: 90vh;
+    background: url("https://images.unsplash.com/photo-1542204165-65bf26472b9b") center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.75);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+h1 {
+    color: #39ff14;
+    font-size: 3em;
+}
+
+.countdown {
+    font-size: 1.5em;
+    margin: 15px 0;
+    color: #39ff14;
+}
+
+.cta {
+    padding: 15px 25px;
+    background: #39ff14;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.section {
+    padding: 40px 20px;
+}
+
+.card {
+    max-width: 500px;
+    margin: auto;
+    background: #111;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #39ff14;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <div class="overlay">
+        <h1>Puff Puff Pass</h1>
+        <p>Experiencia privada 420 🎨🌿</p>
+
+        <div class="countdown" id="countdown"></div>
+
+        <a href="#form"><button class="cta">Reservar ahora 🔥</button></a>
+    </div>
+</div>
+
+<div class="section card" id="form">
+
+    <h2>Reserva tu lugar</h2>
+
+    <form action="YOUR_WEBHOOK_URL" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <input type="email" name="email" placeholder="Correo" required>
+        <input type="tel" name="telefono" placeholder="Teléfono" required>
+
+        <button type="submit">Guardar mi lugar</button>
+    </form>
+
+    <br>
+
+    <!-- STRIPE BUTTON -->
+    <a href="YOUR_STRIPE_LINK" target="_blank">
+        <button>💰 Pagar y asegurar acceso</button>
+    </a>
+
+    <p>⚠️ Cupo limitado — ubicación secreta después del pago</p>
+
+</div>
+
+<script>
+const eventDate = new Date("April 20, 2026 16:20:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+    const m = Math.floor((diff % (1000*60*60))/(1000*60));
+    const s = Math.floor((diff % (1000*60))/1000);
+
+    document.getElementById("countdown").innerHTML =
+        `Empieza en: ${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+</script>
+
+</body>
+</html>
+```
