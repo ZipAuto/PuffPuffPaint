@@ -1,138 +1,230 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Puff Puff Pass</title>
+
+<!-- Google Fonts for a modern look -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: Arial;
-    background: black;
-    color: white;
-    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    color: #fff;
+    line-height: 1.6;
 }
 
+/* Hero section styles */
 .hero {
     height: 90vh;
-    background: url("https://images.unsplash.com/photo-1542204165-65bf26472b9b") center/cover;
+    background: url("https://images.unsplash.com/photo-1542204165-65bf26472b9b") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Overlay for readability */
 .overlay {
-    background: rgba(0,0,0,0.75);
-    padding: 30px;
+    background: rgba(0,0,0,0.6);
+    padding: 40px 30px;
     border-radius: 20px;
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    animation: fadeIn 1s ease;
 }
 
+/* Main title */
 h1 {
-    color: #39ff14;
-    font-size: 3em;
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+}
+
+/* Subtitle and countdown */
+p {
+    font-size: 1.2em;
+    margin: 10px 0 20px;
 }
 
 .countdown {
     font-size: 1.5em;
     margin: 15px 0;
-    color: #39ff14;
+    padding: 10px 20px;
+    background: rgba(0,255,204,0.2);
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px #00ffcc;
+    color: #fff;
+    font-weight: bold;
 }
 
 .cta {
-    padding: 15px 25px;
-    background: #39ff14;
+    padding: 15px 30px;
+    background: #00ffcc;
     border: none;
-    border-radius: 10px;
-    font-size: 1.2em;
+    border-radius: 25px;
+    font-size: 1.4em;
     cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0,255,204,0.4);
+    transition: all 0.3s ease;
 }
 
+.cta:hover {
+    background: #00bfae;
+    transform: scale(1.05);
+}
+
+/* Sign-up section styles */
 .section {
-    padding: 40px 20px;
-}
-
-.card {
-    max-width: 500px;
-    margin: auto;
+    padding: 50px 20px;
     background: #111;
-    padding: 25px;
-    border-radius: 15px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: -50px auto 50px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    text-align: center;
+    animation: fadeIn 1s ease;
 }
 
-input, select {
-    width: 100%;
-    padding: 14px;
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #00ffcc;
+    letter-spacing: 2px;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    padding: 15px;
     margin: 10px 0;
     border-radius: 10px;
     border: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+}
+input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ffcc;
+}
+button {
+    padding: 15px;
+    margin-top: 15px;
+    background: #00ffcc;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button:hover {
+    background: #00bfae;
+    transform: scale(1.05);
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    background: #39ff14;
-    border: none;
-    border-radius: 10px;
+/* Info text style */
+p.notice {
     font-size: 1.2em;
+    margin-top: 15px;
+    color: #ff6347;
+    font-weight: bold;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
-
 <body>
 
+<!-- Hero section -->
 <div class="hero">
     <div class="overlay">
         <h1>Puff Puff Pass</h1>
         <p>Experiencia privada 420 🎨🌿</p>
-
         <div class="countdown" id="countdown"></div>
-
-        <a href="#form"><button class="cta">Reservar ahora 🔥</button></a>
+        <a href="#form" style="text-decoration: none;"><button class="cta">Reservar ahora 🔥</button></a>
     </div>
 </div>
 
-<div class="section card" id="form">
-
+<!-- Sign-up form section -->
+<div class="section" id="form">
     <h2>Reserva tu lugar</h2>
-
-    <form action="YOUR_WEBHOOK_URL" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre completo" required>
-        <input type="email" name="email" placeholder="Correo" required>
-        <input type="tel" name="telefono" placeholder="Teléfono" required>
-
-        <button type="submit">Guardar mi lugar</button>
+    <form id="reservationForm">
+        <input type="text" name="nombre" placeholder="Nombre completo" required />
+        <input type="email" name="email" placeholder="Correo" required />
+        <input type="tel" name="telefono" placeholder="Teléfono" required />
+        <button type="submit">Enviar y WhatsApp</button>
     </form>
-
-    <br>
-
-    <!-- STRIPE BUTTON -->
-    <a href="YOUR_STRIPE_LINK" target="_blank">
-        <button>💰 Pagar y asegurar acceso</button>
-    </a>
-
-    <p>⚠️ Cupo limitado — ubicación secreta después del pago</p>
-
+    <p class="notice">⚠️ Cupo limitado — ubicación secreta después del pago</p>
 </div>
 
 <script>
+// Countdown Timer
 const eventDate = new Date("April 20, 2026 16:20:00").getTime();
-
 setInterval(() => {
     const now = new Date().getTime();
     const diff = eventDate - now;
-
     const d = Math.floor(diff / (1000*60*60*24));
     const h = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
     const m = Math.floor((diff % (1000*60*60))/(1000*60));
     const s = Math.floor((diff % (1000*60))/1000);
-
     document.getElementById("countdown").innerHTML =
         `Empieza en: ${d}d ${h}h ${m}m ${s}s`;
 }, 1000);
+
+// Webhook URL - replace with your actual webhook
+const webhookURL = "YOUR_WEBHOOK_URL";
+
+// Form submission
+document.getElementById('reservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = e.target.nombre.value.trim();
+    const email = e.target.email.value.trim();
+    const telefono = e.target.telefono.value.trim();
+
+    if (!nombre || !email || !telefono) {
+        alert('Por favor, complete todos los campos');
+        return;
+    }
+
+    const data = { nombre, email, telefono };
+
+    fetch(webhookURL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(res => {
+        if(res.ok) {
+            alert('¡Reserva enviada! Abriendo WhatsApp...');
+            // Format phone for WhatsApp link - keep only digits
+            const cleanNumber = telefono.replace(/\D/g,'');
+            const message = encodeURIComponent(`Hola, soy ${nombre}. Quiero reservar mi lugar.`);
+            const whatsappLink = `https://wa.me/${cleanNumber}?text=${message}`;
+            window.open(whatsappLink, '_blank');
+            e.target.reset();
+        } else {
+            alert('Error al enviar la reserva.');
+        }
+    }).catch(() => {
+        alert('Error en la red.');
+    });
+});
 </script>
 
 </body>
 </html>
-```
